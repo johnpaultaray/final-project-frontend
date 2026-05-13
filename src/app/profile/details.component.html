@@ -1,0 +1,10 @@
+<div *ngIf="account$ | async as account">
+    <p>
+        <strong>Name: </strong> {{account.title}} {{account.firstName}} {{account.lastName}}<br />
+        <strong>Email: </strong> {{account.email}}<br />
+        <strong>Role: </strong> {{account.role}}
+    </p>
+    <p>
+        <a routerLink="update" class="btn btn-primary">Update Profile</a>
+    </p>
+</div>
