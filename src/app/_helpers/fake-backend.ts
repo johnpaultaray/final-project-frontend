@@ -229,7 +229,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
 
         function generateJwtToken(account: Account) {
             const header = btoa(JSON.stringify({ alg: 'HS256', typ: 'JWT' }));
-            const payload = btoa(JSON.stringify({ 
+            const payload = btoa(JSON.stringify({
                 exp: Math.floor(Date.now() / 1000) + (15 * 60),
                 id: account.id,
                 firstName: account.firstName,
