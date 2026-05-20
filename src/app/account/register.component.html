@@ -1,10 +1,10 @@
-<div class="card">
-    <h4 class="card-header">Register</h4>
-    <div class="card-body">
+<div class="glass-panel p-4">
+    <h4 class="fw-bold mb-4">Create an Account</h4>
+    <div>
         <form [formGroup]="form" (ngSubmit)="onSubmit()">
             <div class="row">
                 <div class="mb-3 col">
-                    <label class="form-label">Title</label>
+                    <label class="form-label text-muted">Title</label>
                     <select formControlName="title" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['title'].errors }">
                         <option value=""></option>
                         <option value="Mr">Mr</option>
@@ -17,14 +17,14 @@
                     </div>
                 </div>
                 <div class="mb-3 col-5">
-                    <label class="form-label">First Name</label>
+                    <label class="form-label text-muted">First Name</label>
                     <input type="text" formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['firstName'].errors }" />
                     <div *ngIf="submitted && f['firstName'].errors" class="invalid-feedback">
                         <div *ngIf="f['firstName'].errors['required']">First Name is required</div>
                     </div>
                 </div>
                 <div class="mb-3 col-5">
-                    <label class="form-label">Last Name</label>
+                    <label class="form-label text-muted">Last Name</label>
                     <input type="text" formControlName="lastName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['lastName'].errors }" />
                     <div *ngIf="submitted && f['lastName'].errors" class="invalid-feedback">
                         <div *ngIf="f['lastName'].errors['required']">Last Name is required</div>
@@ -32,7 +32,7 @@
                 </div>
             </div>
             <div class="mb-3">
-                <label class="form-label">Email</label>
+                <label class="form-label text-muted">Email</label>
                     <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['email'].errors }" />
                     <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
                         <div *ngIf="f['email'].errors['required']">Email is required</div>
@@ -40,7 +40,7 @@
                 </div>
             </div>
             <div class="mb-3">
-                <label class="form-label">Password</label>
+                <label class="form-label text-muted">Password</label>
                     <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['password'].errors }" />
                     <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
                         <div *ngIf="f['password'].errors['required']">Password is required</div>
@@ -48,7 +48,7 @@
                 </div>
             </div>
             <div class="mb-3">
-                <label class="form-label">Confirm Password</label>
+                <label class="form-label text-muted">Confirm Password</label>
                     <input type="password" formControlName="confirmPassword" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['confirmPassword'].errors }" />
                     <div *ngIf="submitted && f['confirmPassword'].errors" class="invalid-feedback">
                         <div *ngIf="f['confirmPassword'].errors['required']">Confirm Password is required</div>
@@ -57,19 +57,19 @@
             </div>
             <div class="mb-3 form-check">
                 <input type="checkbox" formControlName="acceptTerms" class="form-check-input" [ngClass]="{ 'is-invalid': submitted && f['acceptTerms'].errors }" id="acceptTerms" />
-                <label for="acceptTerms" class="form-check-label">I accept the Terms and Conditions</label>
+                <label for="acceptTerms" class="form-check-label text-muted">I accept the Terms and Conditions</label>
                 <div *ngIf="submitted && f['acceptTerms'].errors" class="invalid-feedback">
                     <div>You must accept the Terms and Conditions to continue</div>
                 </div>
             </div>
-            <div class="mb-3">
-                <button [disabled]="loading" class="btn btn-primary">
-                    <span *ngIf="loading" class="spinner-border spinner-border-sm me-1"></span>
-                    Register
+            <div class="mb-4 mt-4">
+                <button [disabled]="loading" class="btn btn-primary btn-lg w-100 fw-semibold">
+                    <span *ngIf="loading" class="spinner-border spinner-border-sm me-2"></span>
+                    Register Account
                 </button>
             </div>
-            <div class="text-center">
-                Already have an account? <a routerLink="/account/login">Login</a>
+            <div class="text-center text-muted border-top pt-3" style="border-color: rgba(255,255,255,0.1) !important;">
+                Already have an account? <a routerLink="/account/login" class="text-primary text-decoration-none fw-semibold">Login</a>
             </div>
         </form>
     </div>

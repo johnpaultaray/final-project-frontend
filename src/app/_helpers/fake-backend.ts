@@ -5,6 +5,7 @@ import { delay, materialize, dematerialize } from 'rxjs/operators';
 import { Account, Role } from '@app/_models/account';
 import { AlertService } from '@app/_services/alert.service';
 
+/*
 const accountsKey = 'angular-21-auth-accounts';
 const currentAccountIdKey = 'angular-21-auth-current-account-id';
 let accounts: Account[] = JSON.parse(localStorage.getItem(accountsKey)!) || [];
@@ -22,12 +23,15 @@ function setCurrentAccount(account: Account | null) {
         localStorage.removeItem(currentAccountIdKey);
     }
 }
+*/
 
 @Injectable()
 export class FakeBackendInterceptor implements HttpInterceptor {
     constructor(private alertService: AlertService) { }
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+        return next.handle(request);
+        /*
         const { url, method, headers, body } = request;
 
         const handleRoute = (request: HttpRequest<any>): Observable<HttpEvent<any>> => {
@@ -242,6 +246,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
         }
 
         return handleRoute(request);
+        */
     }
 }
 

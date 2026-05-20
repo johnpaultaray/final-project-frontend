@@ -1,31 +1,31 @@
-<div class="card">
-    <h4 class="card-header">Login</h4>
-    <div class="card-body">
+<div class="glass-panel p-4">
+    <h4 class="fw-bold mb-4">Welcome Back</h4>
+    <div>
         <form [formGroup]="form" (ngSubmit)="onSubmit()">
             <div class="mb-3">
-                <label class="form-label">Email</label>
-                <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['email'].errors }" />
+                <label class="form-label text-muted">Email Address</label>
+                <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['email'].errors }" placeholder="Enter your email" />
                 <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
                     <div *ngIf="f['email'].errors['required']">Email is required</div>
                     <div *ngIf="f['email'].errors['email']">Email is invalid</div>
                 </div>
             </div>
-            <div class="mb-3">
-                <label class="form-label">Password</label>
-                <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['password'].errors }" />
+            <div class="mb-4">
+                <label class="form-label text-muted">Password</label>
+                <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['password'].errors }" placeholder="Enter your password" />
                 <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
                     <div *ngIf="f['password'].errors['required']">Password is required</div>
                 </div>
             </div>
-            <div class="mb-3">
-                <button [disabled]="loading" class="btn btn-primary">
-                    <span *ngIf="loading" class="spinner-border spinner-border-sm me-1"></span>
+            <div class="d-flex flex-column gap-3 mb-4">
+                <button [disabled]="loading" class="btn btn-primary btn-lg w-100 fw-semibold">
+                    <span *ngIf="loading" class="spinner-border spinner-border-sm me-2"></span>
                     Login
                 </button>
-                <a routerLink="/account/forgot-password" class="btn btn-link">Forgot Password?</a>
+                <a routerLink="/account/forgot-password" class="text-center text-muted" style="text-decoration: none;">Forgot Password?</a>
             </div>
-            <div class="text-center">
-                Don't have an account? <a routerLink="/account/register">Register</a>
+            <div class="text-center text-muted border-top pt-3" style="border-color: rgba(255,255,255,0.1) !important;">
+                Don't have an account? <a routerLink="/account/register" class="text-primary text-decoration-none fw-semibold">Register here</a>
             </div>
         </form>
     </div>
