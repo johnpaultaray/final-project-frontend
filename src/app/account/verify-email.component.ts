@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { first } from 'rxjs/operators';
 import { AccountService } from '@app/_services/account.service';
@@ -15,7 +15,8 @@ enum TokenStatus {
     templateUrl: 'verify-email.component.html',
     standalone: true,
     imports: [
-        CommonModule
+        CommonModule,
+        RouterLink
     ]
 })
 export class VerifyEmailComponent implements OnInit {
