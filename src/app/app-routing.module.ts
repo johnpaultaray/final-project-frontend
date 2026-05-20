@@ -21,11 +21,14 @@ export const routes: Routes = [
         canActivate: [AuthGuard],
         data: { roles: [Role.Admin] }
     },
+    // Wildcard route to handle unmatched URLs by redirecting to the home page
     { path: '**', redirectTo: '' }
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(routes)],
+    // FIX: useHash: true routes paths purely within Angular's memory context 
+    // to prevent browsers from requesting non-existent backend physical resources on page reloads.
+    imports: [RouterModule.forRoot(routes, { useHash: true })],
     exports: [RouterModule]
 })
 export class AppRoutingModule { }
