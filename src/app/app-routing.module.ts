@@ -21,13 +21,13 @@ export const routes: Routes = [
         canActivate: [AuthGuard],
         data: { roles: [Role.Admin] }
     },
-    // Wildcard route to handle unmatched URLs by redirecting to the home page
-    { path: '**', redirectTo: '' }
+    // Catch-all: redirect unknown routes to login (not home, to avoid AuthGuard loop)
+    { path: '**', redirectTo: '/account/login' }
 ];
 
 @NgModule({
-    // FIX: useHash: true routes paths purely within Angular's memory context 
-    // to prevent browsers from requesting non-existent backend physical resources on page reloads.
+    // useHash: true — Angular manages routing via the URL hash (#)
+    // BUT emails clicked from Ethereal may strip the #, so we handle both cases
     imports: [RouterModule.forRoot(routes, { useHash: true })],
     exports: [RouterModule]
 })
