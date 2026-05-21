@@ -11,17 +11,19 @@ export class AuthGuard implements CanActivate {
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
         const account = this.accountService.accountValue;
-        
-        if (!account) {
-            this.router.navigate(['/account/login'], { queryParams: { returnUrl: state.url } });
-            return false;
+
+        if (account) {
+            // Check role if data.roles is set on the route
+            if (route.data['roles'] && !route.data['roles'].includes(account.role)) {
+                this.router.navigate(['/']);
+                return false;
+            }
+            return true;
         }
 
-        if (route.data['roles'] && !route.data['roles'].includes(account.role)) {
-            this.router.navigate(['/']);
-            return false;
-        }
-
-        return true;
+        // Not logged in — redirect to login, preserving the attempted URL
+        // IMPORTANT: only redirect to login, never to a page that triggers AuthGuard again
+        this.router.navigate(['/account/login'], { queryParams: { returnUrl: state.url } });
+        return false;
     }
 }
